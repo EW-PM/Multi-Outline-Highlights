@@ -1,22 +1,39 @@
-# Multi Outline Highlights (RuneLite plugin)
+# Multi Outline Highlights
 
-Five color groups. Each group outlines matching NPCs using RuneLite's model
-outline renderer (the same look as Better NPC Highlight's "Outline Highlight").
+A RuneLite plugin that outlines NPCs in up to five color groups. Each group
+matches NPCs by **name**, **ID**, or both, and draws them with RuneLite's model
+outline renderer.
 
-Each group has: Enabled, Color (with alpha), Names, IDs.
-- Names and IDs both work, in the same group, comma-separated.
-- `*` is a wildcard in names (e.g. `Sergeant*`).
-- Trailing commas and curly apostrophes are handled.
-- If an NPC matches more than one group, the lower-numbered group wins.
+![icon](icon.png)
 
-Outline width and feather are shared by all groups.
+## Settings
 
-## Run it
-1. Open this folder in IntelliJ IDEA (File > Open, pick the folder; it imports as Gradle).
-2. Use JDK 11 or newer.
-3. Run `MultiOutlinePluginTest.main()` under src/test/java.
-   It launches RuneLite in developer mode with the plugin loaded.
-   Add VM option `-ea` and program argument `--developer-mode` if prompted.
+**Outline style** (shared by all groups)
+- Outline width
+- Outline feather
 
-Note: sideloaded plugins only run in a dev-launched client. To use it in your
-normal RuneLite, it would have to be submitted to the Plugin Hub.
+**Group 1 to 5** (each one)
+- Enabled
+- Color (alpha supported)
+- Names: comma-separated, case-insensitive, `*` works as a wildcard (e.g. `Sergeant*`)
+- IDs: comma-separated NPC IDs
+
+Trailing commas, extra spaces and curly apostrophes are ignored. If an NPC
+matches more than one group, the lower-numbered group wins.
+
+## Example: God Wars Dungeon by combat style
+
+| Group | Color | Names |
+|---|---|---|
+| 1 | Red (melee) | `Sergeant Strongstack, Starlight, Flight Kilisa, Tstanon Karlak` |
+| 2 | Green (ranged) | `Sergeant Grimspike, Bree, Flockleader Geerin, Zakl'n Gritch` |
+| 3 | Blue (magic) | `Sergeant Steelwill, Growler, Wingman Skree, Balfrug Kreeyath` |
+| 4 | Yellow (bosses) | `General Graardor, Commander Zilyana, Kree'arra, K'ril Tsutsaroth` |
+
+Vardorvis: `Vardorvis' Head` by name, and the axes by ID `12225,12227`.
+
+## Development
+
+Run `MultiOutlinePluginTest.main()` in `src/test/java` from IntelliJ to launch
+RuneLite with the plugin loaded (VM option `-ea`, program argument
+`--developer-mode`). Every push is also built by GitHub Actions.
