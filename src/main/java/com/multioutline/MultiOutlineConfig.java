@@ -162,24 +162,4 @@ public interface MultiOutlineConfig extends Config
 	{
 		return "";
 	}
-
-	// ---------------------------------------------------------------- Presets
-
-	@ConfigSection(name = "Vardorvis axes", description = "Outline Vardorvis' swinging axes", position = 6)
-	String axesSection = "axes";
-
-	@ConfigItem(keyName = "vardorvisAxes", name = "Outline axes", description = "Outline Vardorvis' swinging axes (static and moving)",
-		section = axesSection, position = 0)
-	default boolean vardorvisAxes()
-	{
-		return false;
-	}
-
-	@Alpha
-	@ConfigItem(keyName = "vardorvisAxesColor", name = "Color", description = "Outline color for Vardorvis' axes",
-		section = axesSection, position = 1)
-	default Color vardorvisAxesColor()
-	{
-		return new Color(0, 221, 255);
-	}
 }

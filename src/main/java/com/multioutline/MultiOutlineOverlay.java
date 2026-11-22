@@ -15,9 +15,6 @@ import net.runelite.client.util.Text;
 
 class MultiOutlineOverlay extends Overlay
 {
-	private static final int VARDORVIS_AXE_STATIC = 12225;
-	private static final int VARDORVIS_AXE_MOVING = 12227;
-
 	private final Client client;
 	private final MultiOutlinePlugin plugin;
 	private final MultiOutlineConfig config;
@@ -39,8 +36,7 @@ class MultiOutlineOverlay extends Overlay
 	public Dimension render(Graphics2D graphics)
 	{
 		List<HighlightGroup> groups = plugin.getGroups();
-		boolean axes = config.vardorvisAxes();
-		if (groups.isEmpty() && !axes)
+		if (groups.isEmpty())
 		{
 			return null;
 		}
@@ -52,13 +48,6 @@ class MultiOutlineOverlay extends Overlay
 		{
 			if (npc == null)
 			{
-				continue;
-			}
-
-			int id = npc.getId();
-			if (axes && (id == VARDORVIS_AXE_STATIC || id == VARDORVIS_AXE_MOVING))
-			{
-				outlineRenderer.drawOutline(npc, width, config.vardorvisAxesColor(), feather);
 				continue;
 			}
 

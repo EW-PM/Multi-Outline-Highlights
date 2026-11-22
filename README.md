@@ -17,9 +17,6 @@ outline renderer.
 - Color (alpha supported)
 - Names: comma-separated, case-insensitive, `*` works as a wildcard (e.g. `Sergeant*`)
 
-**Vardorvis axes**
-- Outline axes (on/off) and color. The axes have no clickable name, so this preset matches them directly.
-
 Trailing commas, extra spaces and curly apostrophes are ignored. If an NPC
 matches more than one group, the lower-numbered group wins.
 
@@ -32,7 +29,7 @@ matches more than one group, the lower-numbered group wins.
 | 3 | Blue (magic) | `Sergeant Steelwill, Growler, Wingman Skree, Balfrug Kreeyath` |
 | 4 | Yellow (bosses) | `General Graardor, Commander Zilyana, Kree'arra, K'ril Tsutsaroth` |
 
-Vardorvis: put `Vardorvis' Head` in a group, and turn on the Vardorvis axes preset.
+Vardorvis: put `Vardorvis' Head` in a group.
 
 ## Development
 
