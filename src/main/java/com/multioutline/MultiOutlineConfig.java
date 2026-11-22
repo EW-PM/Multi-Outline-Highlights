@@ -59,11 +59,6 @@ public interface MultiOutlineConfig extends Config
 		return "";
 	}
 
-	@ConfigItem(keyName = "ids1", name = "IDs", description = "Comma-separated NPC IDs", section = group1, position = 3)
-	default String ids1()
-	{
-		return "";
-	}
 
 	// ---------------------------------------------------------------- Group 2
 
@@ -90,11 +85,6 @@ public interface MultiOutlineConfig extends Config
 		return "";
 	}
 
-	@ConfigItem(keyName = "ids2", name = "IDs", description = "Comma-separated NPC IDs", section = group2, position = 3)
-	default String ids2()
-	{
-		return "";
-	}
 
 	// ---------------------------------------------------------------- Group 3
 
@@ -121,11 +111,6 @@ public interface MultiOutlineConfig extends Config
 		return "";
 	}
 
-	@ConfigItem(keyName = "ids3", name = "IDs", description = "Comma-separated NPC IDs", section = group3, position = 3)
-	default String ids3()
-	{
-		return "";
-	}
 
 	// ---------------------------------------------------------------- Group 4
 
@@ -152,11 +137,6 @@ public interface MultiOutlineConfig extends Config
 		return "";
 	}
 
-	@ConfigItem(keyName = "ids4", name = "IDs", description = "Comma-separated NPC IDs", section = group4, position = 3)
-	default String ids4()
-	{
-		return "";
-	}
 
 	// ---------------------------------------------------------------- Group 5
 
@@ -183,9 +163,23 @@ public interface MultiOutlineConfig extends Config
 		return "";
 	}
 
-	@ConfigItem(keyName = "ids5", name = "IDs", description = "Comma-separated NPC IDs", section = group5, position = 3)
-	default String ids5()
+	// ---------------------------------------------------------------- Presets
+
+	@ConfigSection(name = "Vardorvis axes", description = "Outline Vardorvis' swinging axes", position = 6)
+	String axesSection = "axes";
+
+	@ConfigItem(keyName = "vardorvisAxes", name = "Outline axes", description = "Outline Vardorvis' swinging axes (static and moving)",
+		section = axesSection, position = 0)
+	default boolean vardorvisAxes()
 	{
-		return "";
+		return false;
+	}
+
+	@Alpha
+	@ConfigItem(keyName = "vardorvisAxesColor", name = "Color", description = "Outline color for Vardorvis' axes",
+		section = axesSection, position = 1)
+	default Color vardorvisAxesColor()
+	{
+		return new Color(0, 221, 255);
 	}
 }

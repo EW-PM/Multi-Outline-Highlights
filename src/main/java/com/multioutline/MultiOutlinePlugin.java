@@ -14,7 +14,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Multi Outline Highlights",
-	description = "Outline NPCs in up to five color groups, by name or ID",
+	description = "Outline NPCs in up to five color groups by name",
 	tags = {"npc", "highlight", "outline", "color", "group", "boss"}
 )
 public class MultiOutlinePlugin extends Plugin
@@ -67,21 +67,21 @@ public class MultiOutlinePlugin extends Plugin
 	private void rebuildGroups()
 	{
 		List<HighlightGroup> list = new ArrayList<>(5);
-		add(list, config.enabled1(), config.color1(), config.names1(), config.ids1());
-		add(list, config.enabled2(), config.color2(), config.names2(), config.ids2());
-		add(list, config.enabled3(), config.color3(), config.names3(), config.ids3());
-		add(list, config.enabled4(), config.color4(), config.names4(), config.ids4());
-		add(list, config.enabled5(), config.color5(), config.names5(), config.ids5());
+		add(list, config.enabled1(), config.color1(), config.names1());
+		add(list, config.enabled2(), config.color2(), config.names2());
+		add(list, config.enabled3(), config.color3(), config.names3());
+		add(list, config.enabled4(), config.color4(), config.names4());
+		add(list, config.enabled5(), config.color5(), config.names5());
 		groups = Collections.unmodifiableList(list);
 	}
 
-	private static void add(List<HighlightGroup> list, boolean enabled, java.awt.Color color, String names, String ids)
+	private static void add(List<HighlightGroup> list, boolean enabled, java.awt.Color color, String names)
 	{
 		if (!enabled)
 		{
 			return;
 		}
-		HighlightGroup g = new HighlightGroup(color, names, ids);
+		HighlightGroup g = new HighlightGroup(color, names);
 		if (!g.isEmpty())
 		{
 			list.add(g);

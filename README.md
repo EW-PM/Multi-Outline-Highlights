@@ -1,7 +1,7 @@
 # Multi Outline Highlights
 
 A RuneLite plugin that outlines NPCs in up to five color groups. Each group
-matches NPCs by **name**, **ID**, or both, and draws them with RuneLite's model
+matches NPCs by **name** and draws them with RuneLite's model
 outline renderer.
 
 ![icon](icon.png)
@@ -16,7 +16,9 @@ outline renderer.
 - Enabled
 - Color (alpha supported)
 - Names: comma-separated, case-insensitive, `*` works as a wildcard (e.g. `Sergeant*`)
-- IDs: comma-separated NPC IDs
+
+**Vardorvis axes**
+- Outline axes (on/off) and color. The axes have no clickable name, so this preset matches them directly.
 
 Trailing commas, extra spaces and curly apostrophes are ignored. If an NPC
 matches more than one group, the lower-numbered group wins.
@@ -30,7 +32,7 @@ matches more than one group, the lower-numbered group wins.
 | 3 | Blue (magic) | `Sergeant Steelwill, Growler, Wingman Skree, Balfrug Kreeyath` |
 | 4 | Yellow (bosses) | `General Graardor, Commander Zilyana, Kree'arra, K'ril Tsutsaroth` |
 
-Vardorvis: `Vardorvis' Head` by name, and the axes by ID `12225,12227`.
+Vardorvis: put `Vardorvis' Head` in a group, and turn on the Vardorvis axes preset.
 
 ## Development
 

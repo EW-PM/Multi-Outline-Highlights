@@ -15,6 +15,9 @@ import net.runelite.client.util.Text;
 
 class MultiOutlineOverlay extends Overlay
 {
+	private static final int VARDORVIS_AXE_STATIC = 12225;
+	private static final int VARDORVIS_AXE_MOVING = 12227;
+
 	private final Client client;
 	private final MultiOutlinePlugin plugin;
 	private final MultiOutlineConfig config;
@@ -36,7 +39,8 @@ class MultiOutlineOverlay extends Overlay
 	public Dimension render(Graphics2D graphics)
 	{
 		List<HighlightGroup> groups = plugin.getGroups();
-		if (groups.isEmpty())
+		boolean axes = config.vardorvisAxes();
+		if (groups.isEmpty() && !axes)
 		{
 			return null;
 		}
@@ -51,19 +55,26 @@ class MultiOutlineOverlay extends Overlay
 				continue;
 			}
 
+			int id = npc.getId();
+			if (axes && (id == VARDORVIS_AXE_STATIC || id == VARDORVIS_AXE_MOVING))
+			{
+				outlineRenderer.drawOutline(npc, width, config.vardorvisAxesColor(), feather);
+				continue;
+			}
+
 			// Transformed composition covers NPCs that change form mid-fight
 			NPCComposition comp = npc.getTransformedComposition();
-			int id = comp != null ? comp.getId() : npc.getId();
 			String name = comp != null ? comp.getName() : npc.getName();
-			if (name != null)
+			if (name == null)
 			{
-				name = Text.removeTags(name);
+				continue;
 			}
+			name = Text.removeTags(name);
 
 			// First matching group wins, so group order sets priority
 			for (HighlightGroup group : groups)
 			{
-				if (group.matches(id, name) || (id != npc.getId() && group.matches(npc.getId(), name)))
+				if (group.matches(name))
 				{
 					outlineRenderer.drawOutline(npc, width, group.color, feather);
 					break;
